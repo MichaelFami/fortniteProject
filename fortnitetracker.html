@@ -43,20 +43,24 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script>
+        var FortniteTracker = "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69";
 
-    var FortniteTracker = "https://api.fortnitetracker.com/v1/profile/{platform}/{epic-nickname}";
+        var apikey = "02b3c124-d33b-4b4f-a6e8-731417e710a8";
 
-    var apikey = "02b3c124-d33b-4b4f-a6e8-731417e710a8";
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69",
+            "method": "GET",
+            "headers": {
+                "TRN-Api-Key": "02b3c124-d33b-4b4f-a6e8-731417e710a8",
+                "Cache-Control": "no-cache",
+            }
+        }
 
-    $.ajax({
-        url:queryURL,
-        method:"GET",
-    }).done(function(response) {
-
-
-
-    })
-
+        $.ajax(settings).done(function(response) {
+            console.log(response);
+        });
     </script>
 
 
