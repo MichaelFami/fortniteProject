@@ -31,7 +31,24 @@ fclose($fp);
     </head>
 
     <body>
-        <h1>Fortnite Tracker</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Fortnite Tracker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+
         <input id="playerName" type="text" name="" value=""><button id="button" type="button" name="button">Show Stats</button>
 
     <table class="table">
