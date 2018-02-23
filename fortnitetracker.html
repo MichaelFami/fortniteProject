@@ -37,18 +37,26 @@ fclose($fp);
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>K/D</th>
-                <th>Number of Wins</th>
-                <th>Number of Games Played</th>
-                <th>Top 5</th>
-                <th>Top 10</th>
-                <th>Top 15</th>
+                <th> Name </th>
+                <th> K/D </th>
+                <th> Number of Wins </th>
+                <th> Number of Games Played </th>
+                <th> Top 3 </th>
+                <th> Top 5 </th>
+                <th> Top 10</th>
+                <th> Top 15</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td></td>
+                <td class="name" ></td>
+                <td  class="KD" ></td>
+                <td class="NumofWins" ></td>
+                <td class="NumofGames" ></td>
+                <td class="TopThree" ></td>
+                <td class="TopFive" ></td>
+                <td class="TopTen" ></td>
+                <td class="TopFif" ></td>
             </tr>
         </tbody>
     </table>
@@ -85,6 +93,20 @@ fclose($fp);
         //$.ajax(settings).done(function(response) {
         //    console.log(response);
         // });
+
+
+        $(".name").html(response.name);
+        $(".KD").html(response.name);
+        $(".NumofWins").html(response.name);
+        $(".NumofGames").html(response.name);
+        $(".TopThree").html(response.name);
+        $(".TopFive").html(response.name);
+        $(".TopTen").html(response.name);
+        $(".TopFif").html(response.name);
+
+
+
+
     </script>
 
 
