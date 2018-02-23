@@ -16,23 +16,23 @@ fclose($fp);
 
 ?>
 
-<!doctype html>
-<html lang="en">
+    <!doctype html>
+    <html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Fortnite Tracker</title>
-</head>
+        <title>Fortnite Tracker</title>
+    </head>
 
-<body>
-    <h1>Fortnite Tracker</h1>
-    <input id="playerName" type="text" name="" value=""><button id="button" type="button" name="button">Show Stats</button>
+    <body>
+        <h1>Fortnite Tracker</h1>
+        <input id="playerName" type="text" name="" value=""><button id="button" type="button" name="button">Show Stats</button>
 
     <table class="table">
         <thead>
@@ -62,33 +62,37 @@ fclose($fp);
     </table>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://d3js.org/d3.v4.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script>
+        <script>
+            var response = <?php echo json_encode($response); ?>;
+            response = JSON.parse(response);
+            console.log(response);
+            // var FortniteTracker = "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69";
+            //
+            // var apikey = "02b3c124-d33b-4b4f-a6e8-731417e710a8";
+            //
+            // var settings = {
+            //     "async": true,
+            //     "crossDomain": true,
+            //     "url": "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69",
+            //     "method": "GET",
+            //     "headers": {
+            //         "TRN-Api-Key": "02b3c124-d33b-4b4f-a6e8-731417e710a8",
+            //         "Cache-Control": "no-cache",
+            //     }
+            // }
 
-        var response = <?php echo json_encode($response); ?>;
-        response = JSON.parse(response);
-        console.log(response);
-        // var FortniteTracker = "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69";
-        //
-        // var apikey = "02b3c124-d33b-4b4f-a6e8-731417e710a8";
-        //
-        // var settings = {
-        //     "async": true,
-        //     "crossDomain": true,
-        //     "url": "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69",
-        //     "method": "GET",
-        //     "headers": {
-        //         "TRN-Api-Key": "02b3c124-d33b-4b4f-a6e8-731417e710a8",
-        //         "Cache-Control": "no-cache",
-        //     }
-        // }
+            //$.ajax(settings).done(function(response) {
+            //    console.log(response);
+            // });
+        </script>
 
         //$.ajax(settings).done(function(response) {
         //    console.log(response);
@@ -109,7 +113,6 @@ fclose($fp);
 
     </script>
 
+    </body>
 
-</body>
-
-</html>
+    </html>
