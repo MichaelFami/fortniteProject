@@ -101,8 +101,6 @@ fclose($fp);
 
 
         <script>
-
-
             $(".name").html(response.epicUserHandle);
             $(".Killdeath").html(response.Killdeath);
             $(".NumofWins").html(response.NumofWins);
@@ -116,7 +114,6 @@ fclose($fp);
         </script>
 
         <script>
-        var playerName = response.epicUserHandle;
         window.onload = function () {
 
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -125,7 +122,7 @@ fclose($fp);
                 text: "Player Stats"
             },
             axisX: {
-                valueFormatString: "DDD"
+                valueFormatString: "string"
             },
             axisY: {
                 prefix: ""
@@ -139,9 +136,9 @@ fclose($fp);
             },
             data: [{
                 type: "stackedBar",
-                name: "Meals",
+                name: "Killdeath",
                 showInLegend: "true",
-                xValueFormatString: "DD, MMM",
+                xValueFormatString: "####.#",
                 yValueFormatString: "$#,##0",
                 dataPoints: [
                     { x: new Date(2017, 0, 30), y: 56 },
@@ -155,7 +152,7 @@ fclose($fp);
             },
             {
                 type: "stackedBar",
-                name: "Snacks",
+                name: "NumofWins",
                 showInLegend: "true",
                 xValueFormatString: "DD, MMM",
                 yValueFormatString: "$#,##0",
@@ -171,7 +168,7 @@ fclose($fp);
             },
             {
                 type: "stackedBar",
-                name: "Drinks",
+                name: "NumofGames",
                 showInLegend: "true",
                 xValueFormatString: "DD, MMM",
                 yValueFormatString: "$#,##0",
