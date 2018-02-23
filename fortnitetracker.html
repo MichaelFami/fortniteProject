@@ -39,10 +39,10 @@ fclose($fp);
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="fortnitetracker.html">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About Us</a>
+                        <a class="nav-link" href="aboutus.html">About Us</a>
                     </li>
 
                 </ul>
@@ -51,43 +51,44 @@ fclose($fp);
 
         <input id="playerName" type="text" name="" value=""><button id="button" type="button" name="button">Show Stats</button>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th> Name </th>
-                <th> K/D </th>
-                <th> Number of Wins </th>
-                <th> Number of Games Played </th>
-                <th> Top 3 </th>
-                <th> Top 5s </th>
-                <th> Top 3s </th>
-                <th> Top 12s </th>
-                <th> Top 25s </th>
-                <th> Avg Survival Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="name" ></td>
-                <td  class="Killdeath" ></td>
-                <td class="NumofWins" ></td>
-                <td class="NumofGames" ></td>
-                <td class="TopThree" ></td>
-                <td class="TopFiveS" ></td>
-                <td class="TopThreeS" ></td>
-                <td class="TopTwelveS" ></td>
-                <td class="TopTwentyFiveS" ></td>
-                <td class="AvgSurvivalTime"></td>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> K/D </th>
+                    <th> Number of Wins </th>
+                    <th> Number of Games Played </th>
+                    <th> Top 3 </th>
+                    <th> Top 5s </th>
+                    <th> Top 3s </th>
+                    <th> Top 12s </th>
+                    <th> Top 25s </th>
+                    <th> Avg Survival Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="name"></td>
+                    <td class="Killdeath"></td>
+                    <td class="NumofWins"></td>
+                    <td class="NumofGames"></td>
+                    <td class="TopThree"></td>
+                    <td class="TopFiveS"></td>
+                    <td class="TopThreeS"></td>
+                    <td class="TopTwelveS"></td>
+                    <td class="TopTwentyFiveS"></td>
+                    <td class="AvgSurvivalTime"></td>
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
 
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://d3js.org/d3.v4.min.js"></script>
 
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -96,30 +97,25 @@ fclose($fp);
             var response = <?php echo json_encode($response); ?>;
             response = JSON.parse(response);
             console.log(response);
-
-
         </script>
 
 
         <script>
-
-
-        $(".name").html(response.epicUserHandle);
-        $(".Killdeath").html(response.Killdeath);
-        $(".NumofWins").html(response.NumofWins);
-        $(".NumofGames").html(response.NumofGames);
-        $(".TopThree").html(response.TopThree);
-        $(".TopFiveS").html(response.TopFive);
-        $(".TopThreeS").html(response.TopThree);
-        $(".TopTwelveS").html(response.TopTen);
-        $(".TopTwentyFiveS").html(response.TopFif);
-        $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
-
+            $(".name").html(response.epicUserHandle);
+            $(".Killdeath").html(response.Killdeath);
+            $(".NumofWins").html(response.NumofWins);
+            $(".NumofGames").html(response.NumofGames);
+            $(".TopThree").html(response.TopThree);
+            $(".TopFiveS").html(response.TopFive);
+            $(".TopThreeS").html(response.TopThree);
+            $(".TopTwelveS").html(response.TopTen);
+            $(".TopTwentyFiveS").html(response.TopFif);
+            $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
         </script>
 
 
 
-    </script>
+
 
     </body>
 
