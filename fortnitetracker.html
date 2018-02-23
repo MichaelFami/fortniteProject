@@ -42,21 +42,26 @@ fclose($fp);
                 <th> Number of Wins </th>
                 <th> Number of Games Played </th>
                 <th> Top 3 </th>
-                <th> Top 5 </th>
-                <th> Top 10</th>
-                <th> Top 15</th>
+                <th> Top 5s </th>
+                <th> Top 3s </th>
+                <th> Top 12s </th>
+                <th> Top 25s </th>
+                <th> Avg Survival Time</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="name" ></td>
-                <td  class="KD" ></td>
+                <td  class="Killdeath" ></td>
                 <td class="NumofWins" ></td>
                 <td class="NumofGames" ></td>
                 <td class="TopThree" ></td>
-                <td class="TopFive" ></td>
-                <td class="TopTen" ></td>
-                <td class="TopFif" ></td>
+                <td class="TopFiveS" ></td>
+                <td class="TopThreeS" ></td>
+                <td class="TopTwelveS" ></td>
+                <td class="TopTwentyFiveS" ></td>
+                <td class="AvgSurvivalTime"></td>
+
             </tr>
         </tbody>
     </table>
@@ -74,39 +79,24 @@ fclose($fp);
             var response = <?php echo json_encode($response); ?>;
             response = JSON.parse(response);
             console.log(response);
-            // var FortniteTracker = "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69";
-            //
-            // var apikey = "02b3c124-d33b-4b4f-a6e8-731417e710a8";
-            //
-            // var settings = {
-            //     "async": true,
-            //     "crossDomain": true,
-            //     "url": "https://api.fortnitetracker.com/v1/profile/psn/TheeMan69",
-            //     "method": "GET",
-            //     "headers": {
-            //         "TRN-Api-Key": "02b3c124-d33b-4b4f-a6e8-731417e710a8",
-            //         "Cache-Control": "no-cache",
-            //     }
-            // }
 
-            //$.ajax(settings).done(function(response) {
-            //    console.log(response);
-            // });
+
         </script>
 
-        //$.ajax(settings).done(function(response) {
-        //    console.log(response);
-        // });
+
+        <script>
 
 
-        $(".name").html(response.name);
-        $(".KD").html(response.name);
-        $(".NumofWins").html(response.name);
-        $(".NumofGames").html(response.name);
-        $(".TopThree").html(response.name);
-        $(".TopFive").html(response.name);
-        $(".TopTen").html(response.name);
-        $(".TopFif").html(response.name);
+        $(".name").html(response.epicUserHandle);
+        $(".Killdeath").html(response.Killdeath);
+        $(".NumofWins").html(response.NumofWins);
+        $(".NumofGames").html(response.NumofGames);
+        $(".TopThree").html(response.TopThree);
+        $(".TopFiveS").html(response.TopFive);
+        $(".TopThreeS").html(response.TopThree);
+        $(".TopTwelveS").html(response.TopTen);
+        $(".TopTwentyFiveS").html(response.TopFif);
+        $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
 
 
 
