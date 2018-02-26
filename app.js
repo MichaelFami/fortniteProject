@@ -63,6 +63,8 @@ $("#button").on("click", function(){
             var TotalTimePlayedid = "#" + TotalTimePlayed;
 
             number++;
+        } else if (response.error = "Player Not Found"){
+            alert("Player Not Found")
         }
 
     });
