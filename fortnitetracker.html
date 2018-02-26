@@ -88,7 +88,7 @@ if (!empty($_GET['playerName'])) {
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -97,12 +97,9 @@ if (!empty($_GET['playerName'])) {
             var response = <?php echo json_encode($response); ?>;
             response = JSON.parse(response);
             console.log(response);
-        </script>
 
-
-        <script>
             $(".name").html(response.epicUserHandle);
-            $(".Killdeath").html(response.Killdeath);
+            $(".Killdeath").html(response.lifeTimeStats[11]);
             $(".NumofWins").html(response.NumofWins);
             $(".NumofGames").html(response.NumofGames);
             $(".TopThree").html(response.TopThree);
@@ -111,134 +108,9 @@ if (!empty($_GET['playerName'])) {
             $(".TopTwelveS").html(response.TopTen);
             $(".TopTwentyFiveS").html(response.TopFif);
             $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
+
+        
         </script>
-
-        <script>
-        function newPlayer(){
-
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title:{
-                text: "Player Stats"
-            },
-            axisX: {
-                valueFormatString: "string"
-            },
-            axisY: {
-                prefix: ""
-            },
-            toolTip: {
-                shared: true
-            },
-            legend:{
-                cursor: "pointer",
-                itemclick: toggleDataSeries
-            },
-            data: [{
-                type: "stackedBar",
-                name: "Killdeath",
-                showInLegend: "true",
-                xValueFormatString: "####.#",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: new Date(2017, 0, 30), y: 56 },
-                    { x: new Date(2017, 0, 31), y: 45 },
-                    { x: new Date(2017, 1, 1), y: 71 },
-                    { x: new Date(2017, 1, 2), y: 41 },
-                    { x: new Date(2017, 1, 3), y: 60 },
-                    { x: new Date(2017, 1, 4), y: 75 },
-                    { x: new Date(2017, 1, 5), y: 98 }
-                ]
-            },
-            {
-                type: "stackedBar",
-                name: "NumofWins",
-                showInLegend: "true",
-                xValueFormatString: "DD, MMM",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: new Date(2017, 0, 30), y: 86 },
-                    { x: new Date(2017, 0, 31), y: 95 },
-                    { x: new Date(2017, 1, 1), y: 71 },
-                    { x: new Date(2017, 1, 2), y: 58 },
-                    { x: new Date(2017, 1, 3), y: 60 },
-                    { x: new Date(2017, 1, 4), y: 65 },
-                    { x: new Date(2017, 1, 5), y: 89 }
-                ]
-            },
-            {
-                type: "stackedBar",
-                name: "NumofGames",
-                showInLegend: "true",
-                xValueFormatString: "DD, MMM",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: new Date(2017, 0, 30), y: 48 },
-                    { x: new Date(2017, 0, 31), y: 45 },
-                    { x: new Date(2017, 1, 1), y: 41 },
-                    { x: new Date(2017, 1, 2), y: 55 },
-                    { x: new Date(2017, 1, 3), y: 80 },
-                    { x: new Date(2017, 1, 4), y: 85 },
-                    { x: new Date(2017, 1, 5), y: 83 }
-                ]
-            },
-            {
-                type: "stackedBar",
-                name: "Dessert",
-                showInLegend: "true",
-                xValueFormatString: "DD, MMM",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: new Date(2017, 0, 30), y: 61 },
-                    { x: new Date(2017, 0, 31), y: 55 },
-                    { x: new Date(2017, 1, 1), y: 61 },
-                    { x: new Date(2017, 1, 2), y: 75 },
-                    { x: new Date(2017, 1, 3), y: 80 },
-                    { x: new Date(2017, 1, 4), y: 85 },
-                    { x: new Date(2017, 1, 5), y: 105 }
-                ]
-            },
-            {
-                type: "stackedBar",
-                name: "Takeaway",
-                showInLegend: "true",
-                xValueFormatString: "DD, MMM",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: new Date(2017, 0, 30), y: 52 },
-                    { x: new Date(2017, 0, 31), y: 55 },
-                    { x: new Date(2017, 1, 1), y: 20 },
-                    { x: new Date(2017, 1, 2), y: 35 },
-                    { x: new Date(2017, 1, 3), y: 30 },
-                    { x: new Date(2017, 1, 4), y: 45 },
-                    { x: new Date(2017, 1, 5), y: 25 }
-                ]
-            }]
-        });
-        chart.render();
-
-                var number = 1;
-                var Name = "Name" + number;
-                var Killdeath = "Killdeath" + number;
-                var NumofWins = "NumofWins" + number;
-                var NumofGames = "NumofGames" + number;
-                var TopThree = "TopThree" + number;
-                var TopFiveS = "TopFiveS" + number;
-                var TopThreeS = "TopThreeS" + number;
-                var TopTwelveS = "TopTwelveS" + number;
-                var TopTwentyFiveS = "TopTwentyFiveS" + number;
-                var AvgSurvivalTime = "AvgSurvivalTime" + number;
-
-               var td1 = "<td" + Name + "></td>";
-               var td2 = "<td id = " + Killdeath + "> "+ Killdeath +"< /td>";
-               var td3 = "<td id = " + NumofWins + " > < /td>";
-               var td4 = "<td id = " + NumofGames + " > < /td>";
-               var td5 = "<td id = " + TopThree + " > < /td>";
-               var td6 = "<td id = " + TopFiveS + " > < /td>";
-               var td7 = "<td id = " + TopThreeS + " > < /td>";
-               var td8 = "<td id = " + TopTwelveS + " > < /td>";
-               var td9 = "<td id = " + TopTwentyFiveS+ " > < /td>";
-               var td10 = "<td id = " + AvgSurvivalTime + " > < /td>";
 
                var newEntries = (td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9 + td10);
                var newTableRow1 = ("<tr>" + newEntries + "</tr>");
