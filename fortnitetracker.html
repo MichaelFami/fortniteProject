@@ -1,20 +1,4 @@
-<?php
-if (!empty($_GET['playerName'])) {
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://api.fortnitetracker.com/v1/jg3squad/psn/" . $_GET['playerName']);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-    curl_setopt($ch, CURLOPT_HEADER, FALSE);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'TRN-Api-Key: 47112942-ea0a-42d5-ba4e-17d64259a4e1'
-    ));
-    $response = curl_exec($ch);
-    curl_close($ch);
-}
-
-?>
-
-    <!doctype html>
+<!doctype html>
     <html lang="en">
 
     <head>
@@ -47,10 +31,8 @@ if (!empty($_GET['playerName'])) {
             </div>
         </nav>
 
-        <form method="get" action="/">
             <input id="playerName" type="text" name="playerName">
-            <button id="button" type="submit" name="button">Show Stats</button>
-        </form>
+            <button id="button" name="button">Show Stats</button>
     <table class="table">
         <thead>
             <tr>
@@ -79,82 +61,214 @@ if (!empty($_GET['playerName'])) {
                 <td class="TopTwentyFiveS" ></td>
                 <td class="AvgSurvivalTime"></td>
 
-                </tr>
-            </tbody>
-        </table>
-        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="chartContainer"></div>
 
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <script>
-            var response = <?php echo json_encode($response); ?>;
-            response = JSON.parse(response);
-            console.log(response);
 
-            $(".name").html(response.epicUserHandle);
-            $(".Killdeath").html(response.lifeTimeStats[11]);
-            $(".NumofWins").html(response.NumofWins);
-            $(".NumofGames").html(response.NumofGames);
-            $(".TopThree").html(response.TopThree);
-            $(".TopFiveS").html(response.TopFive);
-            $(".TopThreeS").html(response.TopThree);
-            $(".TopTwelveS").html(response.TopTen);
-            $(".TopTwentyFiveS").html(response.TopFif);
-            $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
 
-        
+            // $(".name").html(response.epicUserHandle);
+            // $(".Killdeath").html(response.Killdeath);
+            // $(".NumofWins").html(response.NumofWins);
+            // $(".NumofGames").html(response.NumofGames);
+            // $(".TopThree").html(response.TopThree);
+            // $(".TopFiveS").html(response.TopFive);
+            // $(".TopThreeS").html(response.TopThree);
+            // $(".TopTwelveS").html(response.TopTen);
+            // $(".TopTwentyFiveS").html(response.TopFif);
+            // $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
+
+
+
+           $("#button").on("click", function(){
+
+               player = $('#playerName').val();
+
+
+               $.ajax({
+                   url: '/findPlayer.php?playerName=' + player,
+                   method: 'GET'
+               })
+               .done(function(response){
+                   response = JSON.parse(response);
+                   console.log(response);
+
+                   if (response.error != "Player Not Found") {
+                       var number = 1;
+                       var Name = "Name" + number;
+                       var Killdeath = "Killdeath" + number;
+                       var NumofWins = "NumofWins" + number;
+                       var NumofGames = "NumofGames" + number;
+                       var TopThree = "TopThree" + number;
+                       var TopFiveS = "TopFiveS" + number;
+                       var TopThreeS = "TopThreeS" + number;
+                       var TopTwelveS = "TopTwelveS" + number;
+                       var TopTwentyFiveS = "TopTwentyFiveS" + number;
+                       var AvgSurvivalTime = "AvgSurvivalTime" + number;
+
+                       var td1 = "<td id=" + Name + ">" + response.epicUserHandle + "</td>";
+                       var td2 = "<td id = " + Killdeath + ">" + response.lifeTimeStats[11].value + "</td>";
+                       var td3 = "<td id = " + NumofWins + ">" + response.lifeTimeStats[8].value + "</td>";
+                       var td4 = "<td id = " + NumofGames + ">" + response.lifeTimeStats[7].value + "</td>";
+                       var td5 = "<td id = " + TopThree + ">" + response.lifeTimeStats[0].value + "</td>";
+                       var td6 = "<td id = " + TopFiveS + ">" + response.lifeTimeStats[1].value + "</td>";
+                       var td7 = "<td id = " + TopThreeS + ">" + response.lifeTimeStats[2].value + "</td>";
+                       var td8 = "<td id = " + TopTwelveS + "> " + response.lifeTimeStats[4].value + "</td>";
+                       var td9 = "<td id = " + TopTwentyFiveS+ "> " + response.lifeTimeStats[5].value + "</td>";
+                       var td10 = "<td id = " + AvgSurvivalTime + ">" + response.lifeTimeStats[14].value + "</td>";
+
+                       var newEntries = (td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9 + td10);
+                       var newTableRow1 = ("<tr>" + newEntries + "</tr>");
+
+                       $(".table").append(newTableRow1);
+                       var Nameid = "#" + Name;
+                       var Killdeathid = "#" + Killdeath;
+                       var NumofWinsid = "#" + NumofWins;
+                       var NumofGamesid = "#" + NumofGames;
+                       var TopThreeid = "#" + TopThree;
+                       var TopFiveSid = "#" + TopFiveS;
+                       var TopThreeSid = "#" + TopThreeS;
+                       var TopTwelveSid = "#" + TopTwelveS;
+                       var TopTwentyFiveSid = "#" + TopTwentyFiveS;
+                       var AvgSurvivalTimeid = "#" + AvgSurvivalTime;
+
+                       number++;
+                   }
+
+               });
+           });
         </script>
 
-               var newEntries = (td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9 + td10);
-               var newTableRow1 = ("<tr>" + newEntries + "</tr>");
+        <script>
+        window.onload = function () {
 
-               $(".table").append(newTableRow1);
-               var Nameid = "#" + Name;
-               var Killdeathid = "#" + Killdeath;
-               var NumofWinsid = "#" + NumofWins;
-               var NumofGamesid = "#" + NumofGames;
-               var TopThreeid = "#" + TopThree;
-               var TopFiveSid = "#" + TopFiveS;
-               var TopThreeSid = "#" + TopThreeS;
-               var TopTwelveSid = "#" + TopTwelveS;
-               var TopTwentyFiveSid = "#" + TopTwentyFiveS;
-               var AvgSurvivalTimeid = "#" + AvgSurvivalTime;
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title:{
+                text: "Player Stats"
+            },
+            axisX: {
+                valueFormatString: "string"
+            },
+            axisY: {
+                prefix: ""
+            },
+            toolTip: {
+                shared: true
+            },
+            legend:{
+                cursor: "pointer",
+                itemclick: toggleDataSeries
+            },
+            data: [{
+                type: "stackedBar",
+                name: "Killdeath",
+                showInLegend: "true",
+                xValueFormatString: "####.#",
+                yValueFormatString: "$#,##0",
+                dataPoints: [
+                    { x: new Date(2017, 0, 30), y: 56 },
+                    { x: new Date(2017, 0, 31), y: 45 },
+                    { x: new Date(2017, 1, 1), y: 71 },
+                    { x: new Date(2017, 1, 2), y: 41 },
+                    { x: new Date(2017, 1, 3), y: 60 },
+                    { x: new Date(2017, 1, 4), y: 75 },
+                    { x: new Date(2017, 1, 5), y: 98 }
+                ]
+            },
+            {
+                type: "stackedBar",
+                name: "NumofWins",
+                showInLegend: "true",
+                xValueFormatString: "DD, MMM",
+                yValueFormatString: "$#,##0",
+                dataPoints: [
+                    { x: new Date(2017, 0, 30), y: 86 },
+                    { x: new Date(2017, 0, 31), y: 95 },
+                    { x: new Date(2017, 1, 1), y: 71 },
+                    { x: new Date(2017, 1, 2), y: 58 },
+                    { x: new Date(2017, 1, 3), y: 60 },
+                    { x: new Date(2017, 1, 4), y: 65 },
+                    { x: new Date(2017, 1, 5), y: 89 }
+                ]
+            },
+            {
+                type: "stackedBar",
+                name: "NumofGames",
+                showInLegend: "true",
+                xValueFormatString: "DD, MMM",
+                yValueFormatString: "$#,##0",
+                dataPoints: [
+                    { x: new Date(2017, 0, 30), y: 48 },
+                    { x: new Date(2017, 0, 31), y: 45 },
+                    { x: new Date(2017, 1, 1), y: 41 },
+                    { x: new Date(2017, 1, 2), y: 55 },
+                    { x: new Date(2017, 1, 3), y: 80 },
+                    { x: new Date(2017, 1, 4), y: 85 },
+                    { x: new Date(2017, 1, 5), y: 83 }
+                ]
+            },
+            {
+                type: "stackedBar",
+                name: "Dessert",
+                showInLegend: "true",
+                xValueFormatString: "DD, MMM",
+                yValueFormatString: "$#,##0",
+                dataPoints: [
+                    { x: new Date(2017, 0, 30), y: 61 },
+                    { x: new Date(2017, 0, 31), y: 55 },
+                    { x: new Date(2017, 1, 1), y: 61 },
+                    { x: new Date(2017, 1, 2), y: 75 },
+                    { x: new Date(2017, 1, 3), y: 80 },
+                    { x: new Date(2017, 1, 4), y: 85 },
+                    { x: new Date(2017, 1, 5), y: 105 }
+                ]
+            },
+            {
+                type: "stackedBar",
+                name: "Takeaway",
+                showInLegend: "true",
+                xValueFormatString: "DD, MMM",
+                yValueFormatString: "$#,##0",
+                dataPoints: [
+                    { x: new Date(2017, 0, 30), y: 52 },
+                    { x: new Date(2017, 0, 31), y: 55 },
+                    { x: new Date(2017, 1, 1), y: 20 },
+                    { x: new Date(2017, 1, 2), y: 35 },
+                    { x: new Date(2017, 1, 3), y: 30 },
+                    { x: new Date(2017, 1, 4), y: 45 },
+                    { x: new Date(2017, 1, 5), y: 25 }
+                ]
+            }]
+        });
+        chart.render();
+
+        function toggleDataSeries(e) {
+            if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            }
+            else {
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+
+        }
+        </script>
 
 
-
-
-
-                       $(Nameid).html(response.epicUserHandle);
-                       $(Killdeathid).html(response.lifeTimeStats[11].value);
-                       $(NumofWinsid).html(response.lifeTimeStats[8].value);
-                       $(NumofGamesid).html(response.lifeTimeStats[7].value);
-                       $(TopThreeid).html(response.lifeTimeStats[0].value);
-                       $(TopFiveSid).html(response.lifeTimeStats[1].value);
-                       $(TopThreeSid).html(response.lifeTimeStats[2].value);
-                       $(TopTwelveSid).html(response.lifeTimeStats[4].value);
-                       $(TopTwentyFiveSid).html(response.lifeTimeStats[5].value);
-                       $(AvgSurvivalTimeid).html(response.lifeTimeStats[14].value);
-
-               number++;
-           }
-
-           $("#button").on("click", function(e){
-               e.preventDefault();
-               newPlayer();
-           });
-
-
-
-
-
-    </script>
 
     </body>
 
