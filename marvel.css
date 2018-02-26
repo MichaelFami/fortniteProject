@@ -25,10 +25,32 @@ body {
 #miniRow2 {
     margin-top: 50px;
 }
+img {
+    height: 100px;
+    width: 150px;
+}
+#foot {
+    color: white;
+    background: black;
+    height: 200px;
+}
+#card {
+    margin-bottom: 100px;
+}
+#copy {
+    margin-left: 634px;
+}
+#contact {
+    margin-top: 50px;
+}
+#contact, .settings {
+
+    font-size: 20px;
+}
 #stats1 {
     margin-top: 50px;
     margin-bottom: 20px;
-    color: black;
+    color: white;
 }
 #playerName {
     margin-top: 50px;
