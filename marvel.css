@@ -30,3 +30,11 @@ body {
     margin-bottom: 20px;
     color: black;
 }
+#playerName {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#graph {
+    color: white;
+    background: #2f1c5d;
+}
