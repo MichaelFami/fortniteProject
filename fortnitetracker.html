@@ -88,7 +88,7 @@ fclose($fp);
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
-        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -109,71 +109,7 @@ fclose($fp);
             $(".TopTwentyFiveS").html(response.TopFif);
             $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
 
-        window.onload = function () {
-        var names= [response.epicUserHandle];
-        console.log(names);
-        var killdeaths = [response.lifeTimeStats[11].value];
-        console.log(killdeaths);
-        var numOfWins = [response.lifeTimeStats[8].value];
-        console.log(numOfWins);
-        var numOfGames = [response.NumofGames];
-        var topThree = [response.TopThree];
-        var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
-            title:{
-                text: "Player Stats"
-            },
-            axisX: {
-                valueFormatString: "string",
-
-            },
-            axisY: {
-                prefix: ""
-            },
-            toolTip: {
-                shared: true
-            },
-            legend:{
-                cursor: "pointer",
-                itemclick: toggleDataSeries
-            },
-            data: [{
-                type: "stackedBar",
-                name: "Killdeath",
-                showInLegend: "true",
-                xValueFormatString: "####.#",
-                yValueFormatString: "####.#",
-                dataPoints: [
-                    { x: names[0], y: killdeaths[0] },
-                    
-
-                ]
-            },
-            {
-                type: "stackedBar",
-                name: "NumofWins",
-                showInLegend: "true",
-                xValueFormatString: "DD, MMM",
-                yValueFormatString: "$#,##0",
-                dataPoints: [
-                    { x: names[0], y: numOfWins[0] },
-
-                ]
-            }]
-        });
-        chart.render();
-
-        function toggleDataSeries(e) {
-            if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                e.dataSeries.visible = false;
-            }
-            else {
-                e.dataSeries.visible = true;
-            }
-            chart.render();
-        }
-
-        }
+        
         </script>
 
 
