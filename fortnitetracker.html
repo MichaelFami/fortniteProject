@@ -1,18 +1,16 @@
 <?php
-
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://api.fortnitetracker.com/v1/profile/psn/theeman69");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-curl_setopt($ch, CURLOPT_HEADER, FALSE);
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-   'TRN-Api-Key: 47112942-ea0a-42d5-ba4e-17d64259a4e1'
-));
-$response = curl_exec($ch);
-curl_close($ch);
-$fp = fopen("stats.json", "w");
-
-fclose($fp);
+if (!empty($_GET['playerName'])) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, "https://api.fortnitetracker.com/v1/jg3squad/psn/" . $_GET['playerName']);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+    curl_setopt($ch, CURLOPT_HEADER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+        'TRN-Api-Key: 47112942-ea0a-42d5-ba4e-17d64259a4e1'
+    ));
+    $response = curl_exec($ch);
+    curl_close($ch);
+}
 
 ?>
 
@@ -49,8 +47,10 @@ fclose($fp);
             </div>
         </nav>
 
-        <input id="playerName" type="text" name="" value=""><button id="button" type="button" name="button">Show Stats</button>
-
+        <form method="get" action="/">
+            <input id="playerName" type="text" name="playerName">
+            <button id="button" type="submit" name="button">Show Stats</button>
+        </form>
     <table class="table">
         <thead>
             <tr>
@@ -102,18 +102,70 @@ fclose($fp);
 
 
         <script>
+        function newPlayer(){
 
 
-        $(".name").html(response.epicUserHandle);
-        $(".Killdeath").html(response.Killdeath);
-        $(".NumofWins").html(response.NumofWins);
-        $(".NumofGames").html(response.NumofGames);
-        $(".TopThree").html(response.TopThree);
-        $(".TopFiveS").html(response.TopFive);
-        $(".TopThreeS").html(response.TopThree);
-        $(".TopTwelveS").html(response.TopTen);
-        $(".TopTwentyFiveS").html(response.TopFif);
-        $(".AvgSurvivalTime").html(response.AvgSurvivalTime);
+                var number = 1;
+                var Name = "Name" + number;
+                var Killdeath = "Killdeath" + number;
+                var NumofWins = "NumofWins" + number;
+                var NumofGames = "NumofGames" + number;
+                var TopThree = "TopThree" + number;
+                var TopFiveS = "TopFiveS" + number;
+                var TopThreeS = "TopThreeS" + number;
+                var TopTwelveS = "TopTwelveS" + number;
+                var TopTwentyFiveS = "TopTwentyFiveS" + number;
+                var AvgSurvivalTime = "AvgSurvivalTime" + number;
+
+               var td1 = "<td" + Name + "></td>";
+               var td2 = "<td id = " + Killdeath + "> "+ Killdeath +"< /td>";
+               var td3 = "<td id = " + NumofWins + " > < /td>";
+               var td4 = "<td id = " + NumofGames + " > < /td>";
+               var td5 = "<td id = " + TopThree + " > < /td>";
+               var td6 = "<td id = " + TopFiveS + " > < /td>";
+               var td7 = "<td id = " + TopThreeS + " > < /td>";
+               var td8 = "<td id = " + TopTwelveS + " > < /td>";
+               var td9 = "<td id = " + TopTwentyFiveS+ " > < /td>";
+               var td10 = "<td id = " + AvgSurvivalTime + " > < /td>";
+
+               var newEntries = (td1 + td2 + td3 + td4 + td5 + td6 + td7 + td8 + td9 + td10);
+               var newTableRow1 = ("<tr>" + newEntries + "</tr>");
+
+               $(".table").append(newTableRow1);
+               var Nameid = "#" + Name;
+               var Killdeathid = "#" + Killdeath;
+               var NumofWinsid = "#" + NumofWins;
+               var NumofGamesid = "#" + NumofGames;
+               var TopThreeid = "#" + TopThree;
+               var TopFiveSid = "#" + TopFiveS;
+               var TopThreeSid = "#" + TopThreeS;
+               var TopTwelveSid = "#" + TopTwelveS;
+               var TopTwentyFiveSid = "#" + TopTwentyFiveS;
+               var AvgSurvivalTimeid = "#" + AvgSurvivalTime;
+
+
+
+
+
+                       $(Nameid).html(response.epicUserHandle);
+                       $(Killdeathid).html(response.lifeTimeStats[11].value);
+                       $(NumofWinsid).html(response.lifeTimeStats[8].value);
+                       $(NumofGamesid).html(response.lifeTimeStats[7].value);
+                       $(TopThreeid).html(response.lifeTimeStats[0].value);
+                       $(TopFiveSid).html(response.lifeTimeStats[1].value);
+                       $(TopThreeSid).html(response.lifeTimeStats[2].value);
+                       $(TopTwelveSid).html(response.lifeTimeStats[4].value);
+                       $(TopTwentyFiveSid).html(response.lifeTimeStats[5].value);
+                       $(AvgSurvivalTimeid).html(response.lifeTimeStats[14].value);
+
+               number++;
+           }
+
+           $("#button").on("click", function(e){
+               e.preventDefault();
+               newPlayer();
+           });
+
 
 
 
