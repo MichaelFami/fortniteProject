@@ -1,9 +1,32 @@
-body{
-    color: white;
-    background-image: url("https://orig00.deviantart.net/6bae/f/2013/231/3/1/dark_blue_wallpaper_by_malkowitch-d6iuhnh.jpg");
+#con {
+    background-image: url("https://images.greenmangaming.com/601f91f4affe48e8b990515b8ef4879e/fa9e235406ca49d292a84813b7111fac.jpg");
     background-size: cover;
+    height: 500px;
+    width: 100%;
 }
-h1{
+#logo {
+    height: 200px;
+    width: 350px;
+    margin-top: 96px;
+    margin-left: 195px;
+}
+body {
+    background: #221e2d
+}
+#solo1 {
+    /* background-image: url("http://battlegroundsvideos.com/wp-content/uploads/2018/02/gzFPeMIRVjAhqdefault-400x200.jpg"); */
+    /* background-size: contain; */
     margin-top: 50px;
     margin-bottom: 50px;
+}
+#miniRow1 {
+    margin-top: 15px;
+}
+#miniRow2 {
+    margin-top: 50px;
+}
+#stats1 {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: black;
 }
