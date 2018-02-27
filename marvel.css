@@ -1,3 +1,4 @@
+/* design html */
 #con {
     background-image: url("https://images.greenmangaming.com/601f91f4affe48e8b990515b8ef4879e/fa9e235406ca49d292a84813b7111fac.jpg");
     background-size: cover;
@@ -29,24 +30,10 @@ img {
     height: 100px;
     width: 150px;
 }
-#foot {
-    color: white;
-    background: black;
-    height: 200px;
-}
 #card {
     margin-bottom: 100px;
 }
-#copy {
-    margin-left: 634px;
-}
-#contact {
-    margin-top: 50px;
-}
-#contact, .settings {
 
-    font-size: 20px;
-}
 #stats1 {
     margin-top: 50px;
     margin-bottom: 20px;
@@ -59,4 +46,41 @@ img {
 #graph {
     color: white;
     background: #2f1c5d;
+}
+/* contact html */
+#hello {
+    background: #5e576b;
+}
+#context {
+    color: black;
+}
+#text {
+    color: black;
+}
+#detailsbg {
+    background: #473f5f;
+    margin-bottom: 30px;
+}
+#contact {
+    margin-top: 50px;
+}
+#contact, #settings, #home {
+
+    font-size: 20px;
+    color: white;
+}
+#scar, #sniper {
+    height: 150px;
+    width: 250px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#foot {
+    color: white;
+    background: black;
+    height: 200px;
+}
+#copy {
+    margin-left: 634px;
 }
